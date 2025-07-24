@@ -1,0 +1,13 @@
+evaluation:
+  - _target_: metrics.Accuracy
+    num_classes: 9
+    average: micro
+  - _target_: metrics.F1
+    num_classes: 9
+    average: macro
+  - _target_: metrics.Precision
+    num_classes: 9
+    average: macro
+  - _target_: metrics.Recall
+    num_classes: 9
+    average: macro

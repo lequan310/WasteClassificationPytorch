@@ -1,0 +1,14 @@
+defaults:
+  - model: waste_classification
+  - metrics: waste_classification
+  - dataloaders: waste_classification
+  - _self_
+name: WasteClassification
+loss:
+  _target_: loss.CrossEntropy
+inferencer:
+  device: auto
+  weight_path: outputs\2025-07-28\21-17-29\saved\models\WasteClassification\0728_211729\model_best.pth
+  seed: 0
+  save_dir: ${hydra:runtime.output_dir}/predictions
+  output_file: prediction.csv

@@ -1,0 +1,29 @@
+defaults:
+  - model: waste_classification
+  - metrics: waste_classification
+  - dataloaders: waste_classification
+  - writer: tensorboard
+  - _self_
+name: WasteClassification
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 1e-4
+  weight_decay: 1e-2
+loss:
+  _target_: loss.CrossEntropy
+  label_smoothing: 0.1
+lr_scheduler:
+  _target_: torch.optim.lr_scheduler.CosineAnnealingLR
+  T_max: ${trainer.epochs}
+  eta_min: 1e-6
+trainer:
+  device: auto
+  log_step: 50
+  epochs: 200
+  save_dir: ${hydra:runtime.output_dir}/saved
+  save_period: 10
+  verbosity: 2
+  monitor: "max val_f1"
+  early_stop: 20
+  seed: 0
+  resume: null
