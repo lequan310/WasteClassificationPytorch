@@ -1,37 +1,3 @@
-# import torch
-# from torchmetrics.classification import MulticlassF1Score
-
-# from base import BaseMetric
-
-
-# class F1(BaseMetric):
-#     """
-#     Calculates the F1 score using torchmetrics.
-#     """
-
-#     def __init__(
-#         self, num_classes: int, device: str = "auto", average="macro", name="f1"
-#     ):
-#         super().__init__(name=name)
-
-#         if device == "auto":
-#             device = "cuda" if torch.cuda.is_available() else "cpu"
-
-#         self.metric = MulticlassF1Score(num_classes=num_classes, average=average).to(
-#             device
-#         )
-
-#     def __call__(self, output: torch.Tensor, target: torch.Tensor, **kwargs):
-#         """
-#         Args:
-#             output (torch.Tensor): Model output of shape (batch_size, num_classes).
-#             target (torch.Tensor): Ground truth of shape (batch_size,).
-#         Returns:
-#             float: The F1 score for the batch.
-#         """
-#         pred = torch.argmax(output, dim=-1)
-#         return self.metric(pred, target)
-
 import torch
 from torchmetrics.classification import MulticlassF1Score
 
